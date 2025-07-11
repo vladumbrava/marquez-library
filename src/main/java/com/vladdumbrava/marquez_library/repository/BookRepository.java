@@ -1,5 +1,8 @@
 package com.vladdumbrava.marquez_library.repository;
 
-public class BookRepository {
+import com.vladdumbrava.marquez_library.model.Book;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BookRepository extends JpaRepository<Book, Long> {
 
 }
