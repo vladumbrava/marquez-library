@@ -40,4 +40,10 @@ public class BookController {
                                             @RequestBody Integer newTotalCopiesNumber) {
         return bookService.updateBookTotalCopiesNumber(id, newTotalCopiesNumber);
     }
+
+    @PatchMapping("/{id}")
+    public Book updateBookAvailableCopiesNumber(@PathVariable("id") Long id,
+                                                @RequestBody Integer newAvailableCopiesNumber) {
+        return bookService.updateBookAvailableCopiesNumber(id, newAvailableCopiesNumber);
+    }
 }
