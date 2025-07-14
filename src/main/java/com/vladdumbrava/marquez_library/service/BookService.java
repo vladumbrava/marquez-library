@@ -44,17 +44,19 @@ public class BookService {
                     return bookRepository.save(book);
                 })
                 .orElseGet(() -> bookRepository.save(newBook));
-        log.info("Updated book with id: {}", updatedBook.getId());
+        log.info("Updated book with id: {}", id);
         return updatedBook;
     }
 
     public Book updateBookTotalCopiesNumber(Long id, Integer totalCopiesNumber) {
-        return bookRepository.findById(id)
+        Book updatedBook = bookRepository.findById(id)
                 .map(book -> {
                     book.setTotalCopiesNumber(totalCopiesNumber);
                     return bookRepository.save(book);
                 })
                 .orElseThrow(() -> new EntityNotFoundException("Book not found with id: " + id));
+        log.info("Updated total copies number for book with id: {}", id);
+        return updatedBook;
     }
 
 }

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "members")
 @Data
@@ -25,7 +27,7 @@ public class Member {
     private String phoneNumber;
 
     @Column(name = "registration_date")
-    private String registrationDate;
+    private LocalDate registrationDate;
 
     @Column(name = "subscription_type")
     private String subscriptionType;
