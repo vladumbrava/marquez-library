@@ -49,8 +49,17 @@ public class BookService {
     }
 
     public Book updateBookTotalCopiesNumber(Long id, Integer totalCopiesNumber) {
+        //the if statement is purposed to reflect that the library received
+        //a new stock of books of that id, so that means we also increase the number
+        //of available copies
+        //maybe I should make a separate method that implements this logic and
+        //call it addStockOfBooks or something similar
         Book updatedBook = bookRepository.findById(id)
                 .map(book -> {
+                    if (totalCopiesNumber > book.getTotalCopiesNumber()) {
+                        book.setAvailableCopiesNumber(book.getAvailableCopiesNumber() +
+                                totalCopiesNumber - book.getTotalCopiesNumber());
+                    }
                     book.setTotalCopiesNumber(totalCopiesNumber);
                     return bookRepository.save(book);
                 })
