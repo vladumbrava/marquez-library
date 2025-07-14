@@ -17,7 +17,7 @@ public class BookService {
     private final BookRepository bookRepository;
 
     public Book createBook(Book book) {
-        log.info("Created book with title: {}",book.getBookTitle());
+        log.info("Created book with title: {}",book.getTitle());
         return bookRepository.save(book);
     }
 
@@ -33,25 +33,25 @@ public class BookService {
         log.info("Updating book ...");
         Book updatedBook = bookRepository.findById(id)
                 .map(book -> {
-                    book.setBookTitle(newBook.getBookTitle());
-                    book.setBookAuthor(newBook.getBookAuthor());
-                    book.setBookPublicationYear(newBook.getBookPublicationYear());
-                    book.setBookCategory(newBook.getBookCategory());
-                    book.setBookLanguage(newBook.getBookLanguage());
-                    book.setBookPagesNumber(newBook.getBookPagesNumber());
-                    book.setBookTotalCopiesNumber(newBook.getBookTotalCopiesNumber());
-                    book.setBookAvailableCopiesNumber(newBook.getBookAvailableCopiesNumber());
+                    book.setTitle(newBook.getTitle());
+                    book.setAuthor(newBook.getAuthor());
+                    book.setPublicationYear(newBook.getPublicationYear());
+                    book.setCategory(newBook.getCategory());
+                    book.setLanguage(newBook.getLanguage());
+                    book.setPagesNumber(newBook.getPagesNumber());
+                    book.setTotalCopiesNumber(newBook.getTotalCopiesNumber());
+                    book.setAvailableCopiesNumber(newBook.getAvailableCopiesNumber());
                     return bookRepository.save(book);
                 })
                 .orElseGet(() -> bookRepository.save(newBook));
-        log.info("Updated book with id: {}", updatedBook.getBookId());
+        log.info("Updated book with id: {}", updatedBook.getId());
         return updatedBook;
     }
 
     public Book updateBookTotalCopiesNumber(Long id, Integer totalCopiesNumber) {
         return bookRepository.findById(id)
                 .map(book -> {
-                    book.setBookTotalCopiesNumber(totalCopiesNumber);
+                    book.setTotalCopiesNumber(totalCopiesNumber);
                     return bookRepository.save(book);
                 })
                 .orElseThrow(() -> new EntityNotFoundException("Book not found with id: " + id));

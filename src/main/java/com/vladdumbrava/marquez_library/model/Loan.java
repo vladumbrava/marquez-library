@@ -13,7 +13,7 @@ public class Loan {
     @Id
     @Column(name = "loan_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long loanId;
+    private long id;
 
     @Column(name = "book_id")
     private long bookId;
@@ -25,11 +25,11 @@ public class Loan {
     private String loanDate;
 
     @Column(name = "due_date")
-    private String loanDueDate;
+    private String dueDate;
 
     @Column(name = "return_date")
-    private String loanReturnDate;
+    private String returnDate;
 
     @Column(name = "status")
-    private String loanStatus;
+    private String status;
 }

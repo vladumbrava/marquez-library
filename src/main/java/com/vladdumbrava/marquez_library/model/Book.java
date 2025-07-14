@@ -13,30 +13,30 @@ public class Book {
     @Id
     @Column(name = "book_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long bookId;
+    private long id;
 
     @Column(name = "title")
-    private String bookTitle;
+    private String title;
 
     @Column(name = "author")
-    private String bookAuthor;
+    private String author;
 
     @Column(name = "publication_year")
-    private String bookPublicationYear;
+    private String publicationYear;
 
     @Column(name = "category")
-    private String bookCategory;
+    private String category;
 
     @Column(name = "language")
-    private String bookLanguage;
+    private String language;
 
     @Column(name = "pages_number")
-    private Integer bookPagesNumber;
+    private Integer pagesNumber;
 
     @Column(name = "total_copies_number")
-    private Integer bookTotalCopiesNumber;
+    private Integer totalCopiesNumber;
 
     @Column(name = "available_copies_number")
-    private Integer bookAvailableCopiesNumber;
+    private Integer availableCopiesNumber;
 
 }

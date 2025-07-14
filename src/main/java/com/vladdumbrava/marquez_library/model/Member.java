@@ -13,21 +13,21 @@ public class Member {
     @Id
     @Column(name = "member_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long memberId;
+    private long id;
 
     @Column(name = "name")
-    private String memberName;
+    private String name;
 
     @Column(name = "email")
-    private String memberEmail;
+    private String email;
 
     @Column(name = "phone_number")
-    private String memberPhoneNumber;
+    private String phoneNumber;
 
     @Column(name = "registration_date")
-    private String memberRegistrationDate;
+    private String registrationDate;
 
     @Column(name = "subscription_type")
-    private String memberSubscriptionType;
+    private String subscriptionType;
 
 }
