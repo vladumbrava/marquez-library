@@ -1,19 +1,23 @@
 package com.vladdumbrava.marquez_library.service;
 
+import com.vladdumbrava.marquez_library.dto.BookDTO;
 import com.vladdumbrava.marquez_library.model.Book;
 import com.vladdumbrava.marquez_library.repository.BookRepository;
+import com.vladdumbrava.marquez_library.service.dtomapper.BookDTOMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class BookService {
 
+    private final BookDTOMapper bookDTOMapper;
     private final BookRepository bookRepository;
 
     public Book createBook(Book book) {
@@ -21,8 +25,11 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+    public List<BookDTO> getAllBooks() {
+        return bookRepository.findAll()
+                .stream()
+                .map(bookDTOMapper)
+                .collect(Collectors.toList());
     }
 
     public void deleteBook(Long id) {

@@ -1,5 +1,6 @@
 package com.vladdumbrava.marquez_library.controller;
 
+import com.vladdumbrava.marquez_library.dto.BookDTO;
 import com.vladdumbrava.marquez_library.model.Book;
 import com.vladdumbrava.marquez_library.service.BookService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping
-    public List<Book> getAllBooks() {
+    public List<BookDTO> getAllBooks() {
         return bookService.getAllBooks();
     }
 
@@ -35,13 +36,13 @@ public class BookController {
         return bookService.updateBook(id, newBook);
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/update-total-copies/{id}")
     public Book updateBookTotalCopiesNumber(@PathVariable("id") Long id,
                                             @RequestBody Integer newTotalCopiesNumber) {
         return bookService.updateBookTotalCopiesNumber(id, newTotalCopiesNumber);
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("/update-available-copies/{id}")
     public Book updateBookAvailableCopiesNumber(@PathVariable("id") Long id,
                                                 @RequestBody Integer newAvailableCopiesNumber) {
         return bookService.updateBookAvailableCopiesNumber(id, newAvailableCopiesNumber);
