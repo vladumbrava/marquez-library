@@ -1,9 +1,6 @@
 package com.vladdumbrava.marquez_library.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 
@@ -15,6 +12,7 @@ public class Member {
 
     @Id
     @Column(name = "member_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long memberId;
 
     @Column(name = "name")

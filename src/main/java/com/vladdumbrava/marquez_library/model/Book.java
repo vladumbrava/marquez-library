@@ -12,7 +12,7 @@ public class Book {
 
     @Id
     @Column(name = "book_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long bookId;
 
     @Column(name = "title")
@@ -31,12 +31,12 @@ public class Book {
     private String bookLanguage;
 
     @Column(name = "pages_number")
-    private String bookPagesNumber;
+    private Integer bookPagesNumber;
 
     @Column(name = "total_copies_number")
-    private String bookTotalCopiesNumber;
+    private Integer bookTotalCopiesNumber;
 
     @Column(name = "available_copies_number")
-    private String bookAvailableCopiesNumber;
+    private Integer bookAvailableCopiesNumber;
 
 }

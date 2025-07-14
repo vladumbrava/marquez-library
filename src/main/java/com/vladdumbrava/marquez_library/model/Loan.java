@@ -1,9 +1,6 @@
 package com.vladdumbrava.marquez_library.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.ToString;
 
@@ -15,6 +12,7 @@ public class Loan {
 
     @Id
     @Column(name = "loan_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long loanId;
 
     @Column(name = "book_id")
