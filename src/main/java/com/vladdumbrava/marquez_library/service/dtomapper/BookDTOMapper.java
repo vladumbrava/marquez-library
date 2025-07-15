@@ -18,7 +18,7 @@ public class BookDTOMapper implements Function<Book, BookDTO> {
                 book.getCategory(),
                 book.getLanguage(),
                 book.getPagesNumber(),
-//                book.getTotalCopiesNumber(),
+                book.getTotalCopiesNumber(),
                 book.getAvailableCopiesNumber()
         );
     }

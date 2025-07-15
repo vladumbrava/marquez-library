@@ -1,27 +1,34 @@
 package com.vladdumbrava.marquez_library.service;
 
+import com.vladdumbrava.marquez_library.dto.MemberDTO;
 import com.vladdumbrava.marquez_library.model.Member;
 import com.vladdumbrava.marquez_library.repository.MemberRepository;
+import com.vladdumbrava.marquez_library.service.dtomapper.MemberDTOMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class MemberService {
 
+    private final MemberDTOMapper memberDTOMapper;
     private final MemberRepository memberRepository;
 
     public void createMember(Member member) {
         memberRepository.save(member);
     }
 
-    public List<Member> getAllMembers() {
-        return memberRepository.findAll();
+    public List<MemberDTO> getAllMembers() {
+        return memberRepository.findAll()
+                .stream()
+                .map(memberDTOMapper)
+                .collect(Collectors.toList());
     }
 
     public void deleteMember(Long id) {

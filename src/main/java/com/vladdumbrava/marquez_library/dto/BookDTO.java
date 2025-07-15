@@ -8,6 +8,6 @@ public record BookDTO (
    String category,
    String language,
    Integer pagesNumber,
-//   Integer totalCopiesNumber,
+   Integer totalCopiesNumber,
    Integer availableCopiesNumber
 ) {}

@@ -1,5 +1,6 @@
 package com.vladdumbrava.marquez_library.controller;
 
+import com.vladdumbrava.marquez_library.dto.MemberDTO;
 import com.vladdumbrava.marquez_library.model.Member;
 import com.vladdumbrava.marquez_library.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class MemberController {
     }
 
     @GetMapping
-    public List<Member> getAllMembers() {
+    public List<MemberDTO> getAllMembers() {
         return memberService.getAllMembers();
     }
 
