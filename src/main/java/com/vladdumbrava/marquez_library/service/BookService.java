@@ -20,9 +20,9 @@ public class BookService {
     private final BookDTOMapper bookDTOMapper;
     private final BookRepository bookRepository;
 
-    public Book createBook(Book book) {
+    public void createBook(Book book) {
         log.info("Created book with title: {}",book.getTitle());
-        return bookRepository.save(book);
+        bookRepository.save(book);
     }
 
     public List<BookDTO> getAllBooks() {
@@ -36,9 +36,9 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public Book updateBook(Long id, Book newBook) {
+    public void updateBook(Long id, Book newBook) {
         log.info("Updating book ...");
-        Book updatedBook = bookRepository.findById(id)
+        bookRepository.findById(id)
                 .map(book -> {
                     book.setTitle(newBook.getTitle());
                     book.setAuthor(newBook.getAuthor());
@@ -52,29 +52,26 @@ public class BookService {
                 })
                 .orElseGet(() -> bookRepository.save(newBook));
         log.info("Updated book with id: {}", id);
-        return updatedBook;
     }
 
-    public Book updateBookTotalCopiesNumber(Long id, Integer totalCopiesNumber) {
-        Book updatedBook = bookRepository.findById(id)
+    public void updateBookTotalCopiesNumber(Long id, Integer totalCopiesNumber) {
+        bookRepository.findById(id)
                 .map(book -> {
                     book.setTotalCopiesNumber(totalCopiesNumber);
                     return bookRepository.save(book);
                 })
                 .orElseThrow(() -> new EntityNotFoundException("Book not found with id: " + id));
         log.info("Updated total copies number for book with id: {}", id);
-        return updatedBook;
     }
 
-    public Book updateBookAvailableCopiesNumber(Long id, Integer availableCopiesNumber) {
-        Book updatedBook = bookRepository.findById(id)
+    public void updateBookAvailableCopiesNumber(Long id, Integer availableCopiesNumber) {
+        bookRepository.findById(id)
                 .map(book -> {
                     book.setAvailableCopiesNumber(availableCopiesNumber);
                     return bookRepository.save(book);
                 })
                 .orElseThrow(() -> new EntityNotFoundException("Book not found with id: " + id));
         log.info("Updated available copies number for book with id: {}", id);
-        return updatedBook;
     }
 
 

@@ -21,8 +21,8 @@ public class BookController {
     }
 
     @PostMapping
-    public Book createBook(@RequestBody Book book) {
-        return bookService.createBook(book);
+    public void createBook(@RequestBody Book book) {
+        bookService.createBook(book);
     }
 
     @DeleteMapping("/{id}")
@@ -32,19 +32,19 @@ public class BookController {
 
 
     @PutMapping("/{id}")
-    public Book updateBook(@PathVariable("id") Long id, @RequestBody Book newBook) {
-        return bookService.updateBook(id, newBook);
+    public void updateBook(@PathVariable("id") Long id, @RequestBody Book newBook) {
+        bookService.updateBook(id, newBook);
     }
 
     @PatchMapping("/update-total-copies/{id}")
-    public Book updateBookTotalCopiesNumber(@PathVariable("id") Long id,
+    public void updateBookTotalCopiesNumber(@PathVariable("id") Long id,
                                             @RequestBody Integer newTotalCopiesNumber) {
-        return bookService.updateBookTotalCopiesNumber(id, newTotalCopiesNumber);
+        bookService.updateBookTotalCopiesNumber(id, newTotalCopiesNumber);
     }
 
     @PatchMapping("/update-available-copies/{id}")
-    public Book updateBookAvailableCopiesNumber(@PathVariable("id") Long id,
+    public void updateBookAvailableCopiesNumber(@PathVariable("id") Long id,
                                                 @RequestBody Integer newAvailableCopiesNumber) {
-        return bookService.updateBookAvailableCopiesNumber(id, newAvailableCopiesNumber);
+        bookService.updateBookAvailableCopiesNumber(id, newAvailableCopiesNumber);
     }
 }
