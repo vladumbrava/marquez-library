@@ -15,8 +15,8 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping
-    public Member createMember(@RequestBody Member member) {
-        return memberService.createMember(member);
+    public void createMember(@RequestBody Member member) {
+        memberService.createMember(member);
     }
 
     @GetMapping
@@ -30,13 +30,13 @@ public class MemberController {
     }
 
     @PutMapping("/{id}")
-    public Member updateMember(@PathVariable("id") Long id, @RequestBody Member newMember) {
-        return memberService.updateMember(id, newMember);
+    public void updateMember(@PathVariable("id") Long id, @RequestBody Member newMember) {
+        memberService.updateMember(id, newMember);
     }
 
     @PatchMapping("/{id}")
-    public Member updateMemberName(@PathVariable("id") Long id, @RequestBody String newName) {
-        return memberService.updateMemberName(id, newName);
+    public void updateMemberName(@PathVariable("id") Long id, @RequestBody String newName) {
+        memberService.updateMemberName(id, newName);
     }
 
 }

@@ -16,8 +16,8 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
-    public Member createMember(Member member) {
-        return memberRepository.save(member);
+    public void createMember(Member member) {
+        memberRepository.save(member);
     }
 
     public List<Member> getAllMembers() {
@@ -28,8 +28,8 @@ public class MemberService {
         memberRepository.deleteById(id);
     }
 
-    public Member updateMember(Long id, Member newMember) {
-        Member updatedMember = memberRepository.findById(id)
+    public void updateMember(Long id, Member newMember) {
+        memberRepository.findById(id)
                 .map(member -> {
                     member.setName(newMember.getName());
                     member.setEmail(newMember.getEmail());
@@ -39,18 +39,16 @@ public class MemberService {
                     return memberRepository.save(member);
                 })
                 .orElseGet(() -> memberRepository.save(newMember));
-        log.info("Updated member with id: {}", updatedMember.getId());
-        return updatedMember;
+        log.info("Updated member with id: {}", id);
     }
 
-    public Member updateMemberName(Long id, String newName) {
-        Member updatedMember = memberRepository.findById(id)
+    public void updateMemberName(Long id, String newName) {
+        memberRepository.findById(id)
                 .map(member -> {
                     member.setName(newName);
                     return memberRepository.save(member);
                 })
                 .orElseThrow(() -> new EntityNotFoundException("Member not found with id: " + id));
         log.info("Updated name for member with id: {}", id);
-        return updatedMember;
     }
 }
